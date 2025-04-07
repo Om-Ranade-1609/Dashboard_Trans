@@ -1,19 +1,16 @@
 import React from 'react';
-import UploadForm from './components/UploadForm';
-import DocumentList from './components/DocumentList';
-import Navbar from './components/Navbar';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Conversion from './pages/Conversion';
 import './App.css';
 
 function App() {
-  return (
-    <div className="container">
-      <header>
-        <Navbar />
-      </header>
-      <UploadForm />
-      <DocumentList />
-    </div>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/conversion" element={<Conversion />} />
+        </Routes>
+    );
 }
 
 export default App;

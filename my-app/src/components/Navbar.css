@@ -1,130 +1,128 @@
-/* Reset default margins and paddings */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow-x: hidden; /* Prevent horizontal scroll */
-}
-
-/* Navbar container */
+/* Navbar.css */
 .navbar {
-  width: 100%;
-  background: linear-gradient(to right, #1a73e8, #3f51b5);
-  padding: 0.75rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: linear-gradient(to right, #e3f2fd, #bbdefb);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  width: 100%;
 }
 
-/* Logo section */
 .navbar-logo .logo-text {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #fff;
+  font-size: 1.1rem; /* Increased logo text size */
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 1px;
 }
 
-/* Navbar links */
-.navbar-links {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.navbar-links li a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.navbar-links li a:hover {
-  color: #ffeb3b;
-}
-
-/* Hamburger menu for mobile */
 .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  gap: 5px;
 }
 
 .bar {
   width: 25px;
   height: 3px;
-  background-color: #fff;
+  background-color: #333;
+  margin: 3px 0;
   transition: 0.4s;
 }
 
-/* Profile picture */
-.navbar-profile {
-  display: flex;
-  align-items: center;
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
 }
 
-.profile-pic {
-  width: 45px;
-  height: 45px;
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0 auto;
+}
+
+.navbar-links li {
+  margin: 0; /* Removed left margin from li */
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #007bff;
+}
+
+.navbar-profile .profile-pic,
+.mobile-profile .profile-pic {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  cursor: pointer;
-  border: 2px solid #fff;
 }
 
-/* Mobile-specific styles */
-@media screen and (max-width: 768px) {
+.mobile-profile {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
   .navbar-links {
-    position: absolute;
-    top: 65px;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    background: linear-gradient(to bottom, #1a73e8, #3f51b5);
-    padding: 10px 0; /* Reduced padding to remove extra space */
     display: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    flex-direction: column;
+    width: 100%;
+    background: linear-gradient(to right, #e3f2fd, #bbdefb);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transform: scaleY(0);
+    opacity: 0;
   }
 
   .navbar-links.active {
     display: flex;
+    transform: scaleY(1);
+    opacity: 1;
   }
 
-  .hamburger {
-    display: flex;
+  .navbar-links li {
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+
+  .navbar-links li.mobile-profile {
+    display: block;
   }
 
   .navbar-profile {
     display: none;
   }
 
-  /* Fix profile image alignment */
-  .mobile-profile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-  }
-
-  /* 🚀 Fix white gap */
-  .navbar-links.active {
-    min-height: auto; /* No forced height */
-  }
-}
-
-/* Desktop-specific override */
-@media screen and (min-width: 769px) {
-  .mobile-profile {
-    display: none;
+  .mobile-profile .profile-pic {
+    display: block;
   }
 }

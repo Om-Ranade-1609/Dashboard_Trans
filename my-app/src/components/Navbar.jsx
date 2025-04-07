@@ -15,9 +15,9 @@ const Navbar = () => {
       </div>
 
       <div className="hamburger" onClick={toggleMenu}>
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
+        <span className={`bar ${menuOpen ? 'active' : ''}`}></span>
+        <span className={`bar ${menuOpen ? 'active' : ''}`}></span>
+        <span className={`bar ${menuOpen ? 'active' : ''}`}></span>
       </div>
 
       <ul className={`navbar-links ${menuOpen ? 'active' : ''}`}>
@@ -25,8 +25,6 @@ const Navbar = () => {
         <li><a href="#">Documents</a></li>
         <li><a href="#">Features</a></li>
         <li><a href="#">About</a></li>
-
-        {/* Profile Circle in Hamburger for Mobile */}
         <li className="mobile-profile">
           <img
             src="https://i.pravatar.cc/40"
@@ -36,7 +34,6 @@ const Navbar = () => {
         </li>
       </ul>
 
-      {/* Profile Circle on Desktop */}
       <div className="navbar-profile">
         <img
           src="https://i.pravatar.cc/40"

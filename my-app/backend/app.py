@@ -127,22 +127,28 @@ def upload_document():
         with open(json_path, 'w', encoding='utf-8') as f:
             json.dump(json_data, f, indent=4)
 
-        doc_data = {
-            "filename": filename,
-            "filetype": ext,
-            "upload_time": datetime.utcnow(),
-            "content": text,
-            "summary": summary,
-            "converted_filename": json_filename
-        }
+        # Check if the document already exists
+        existing_doc = documents_collection.find_one({"filename": filename})
 
-        doc_id = documents_collection.insert_one(doc_data).inserted_id
+        if existing_doc:
+            return jsonify({"error": "File already exists."}), 400
+        else:
+            doc_data = {
+                "filename": filename,
+                "filetype": ext,
+                "upload_time": datetime.utcnow(),
+                "content": text,
+                "summary": summary,
+                "converted_filename": json_filename
+            }
 
-        return jsonify({
-            "message": "✅ Document processed successfully",
-            "document_id": str(doc_id),
-            "summary": summary
-        }), 200
+            doc_id = documents_collection.insert_one(doc_data).inserted_id
+
+            return jsonify({
+                "message": "✅ Document processed successfully",
+                "document_id": str(doc_id),
+                "summary": summary
+            }), 200
 
     else:
         return jsonify({"error": "Unsupported file type"}), 400

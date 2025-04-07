@@ -1,78 +1,80 @@
-.upload-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  margin: 2rem auto;
-  max-width: 600px;
+.upload-container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.drop-area {
   text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.upload-card h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  color: #333;
-}
-
-/* Drag & Drop Zone */
-.drag-drop-zone {
-  border: 2px dashed #007bff;
-  border-radius: 12px;
   padding: 2rem;
-  margin-bottom: 1rem;
+  border: 2px dashed #bbb;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  width: 100%;
+  box-sizing: border-box;
   cursor: pointer;
-  background-color: #f8faff;
-  transition: border-color 0.3s, background-color 0.3s;
-  position: relative;
+  transition: border-color 0.3s;
 }
 
-.drag-drop-zone.active {
-  border-color: #0056b3;
-  background-color: #eaf3ff;
+.drop-area.drag-over {
+  border-color: #007bff;
+  background-color: #e8f0fe;
 }
 
-.drag-drop-zone p {
-  margin: 0;
-  color: #555;
-  font-size: 1rem;
+.drop-area p {
+  margin-bottom: 1rem;
 }
 
 .file-input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
+  display: none;
 }
 
-/* Button Styling */
+.file-input-label {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.file-input-label:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.file-name {
+  margin-top: 1rem;
+  font-weight: bold;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .button-group {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
   margin-top: 1rem;
 }
 
-.upload-card button {
+.button-group button {
   background-color: #28a745;
   color: white;
+  padding: 0.8rem 2rem;
   border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 30px;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
-.upload-card button:hover {
+.button-group button:hover {
   background-color: #218838;
 }
 
-/* Summary Output */
 .summary-output {
   background-color: #f9f9f9;
   margin-top: 1.5rem;
@@ -91,27 +93,4 @@
   color: #555;
   font-size: 0.95rem;
   line-height: 1.5;
-}
-
-/* Error */
-.error {
-  color: red;
-  margin-top: 1rem;
-  font-weight: bold;
-}
-
-/* Animation */
-.fade-in {
-  animation: fadeIn 0.6s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }

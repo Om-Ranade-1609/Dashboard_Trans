@@ -1,0 +1,64 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-color: #f4f7f9;
+    width: 100%;
+}
+
+.upload-section {
+    width: 90%;
+    max-width: 800px;
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.conversion-prompt {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: #e8f0fe;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+}
+
+.conversion-prompt p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.conversion-prompt button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.conversion-prompt button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #d32f2f;
+    font-weight: bold;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .upload-section, .conversion-prompt {
+        width: 95%;
+    }
+}
